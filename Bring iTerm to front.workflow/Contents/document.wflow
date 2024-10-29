@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>AMApplicationBuild</key>
-	<string>523</string>
+	<string>526</string>
 	<key>AMApplicationVersion</key>
 	<string>2.10</string>
 	<key>AMDocumentVersion</key>
@@ -51,7 +51,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>source</key>
-					<string>on run {input, parameters}	set appName to "iTerm2"		tell application "System Events"		-- Check if the application is running		set isRunning to (name of processes) contains appName	end tell		if isRunning then		tell application "System Events"			-- Check if the application is frontmost			set frontApp to name of first application process whose frontmost is true		end tell				if frontApp is appName then			-- If the application is frontmost, minimize it			do shell script "osascript -e 'tell application \"" &amp; appName &amp; "\" to set miniaturized of first window to true'"		else			-- If the application is not frontmost, bring it to front and unminimize			do shell script "osascript -e 'tell application \"" &amp; appName &amp; "\" to set miniaturized of first window to false'"			tell application "System Events"				set frontmost of application process appName to true			end tell			tell application appName to activate		end if	else		-- If the application is not running, start it		tell application appName to activate	end if		return inputend run</string>
+					<string>tell application "System Events"	if exists (process "iTerm2") then		if visible of process "iTerm2" is true then			set visible of process "iTerm2" to false		else			set visible of process "iTerm2" to true			set frontmost of process "iTerm2" to true		end if	else		tell application "iTerm" to activate	end ifend tell</string>
 				</dict>
 				<key>BundleIdentifier</key>
 				<string>com.apple.Automator.RunScript</string>

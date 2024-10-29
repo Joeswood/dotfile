@@ -12,7 +12,7 @@
 			<key>NSMenuItem</key>
 			<dict>
 				<key>default</key>
-				<string>Bring ChatGPT to front</string>
+				<string>Toggle Email</string>
 			</dict>
 			<key>NSMessage</key>
 			<string>runWorkflowAsService</string>
